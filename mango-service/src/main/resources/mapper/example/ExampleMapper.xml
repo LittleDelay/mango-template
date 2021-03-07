@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mango.example.dao.ExampleMapper">
+    <resultMap id="BaseResultMap" type="com.mango.example.domain.model.Example">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="example_code" jdbcType="VARCHAR" property="exampleCode"/>
+        <result column="example_name" jdbcType="VARCHAR" property="exampleName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <resultMap id="ExamplePageBoResultMap" type="com.mango.example.domain.bo.ExamplePageBo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="example_code" jdbcType="VARCHAR" property="exampleCode"/>
+        <result column="example_name" jdbcType="VARCHAR" property="exampleName"/>
+    </resultMap>
+
+    <sql id="BaseColumn">
+        te.id,
+        te.example_code,
+        te.example_name,
+        te.create_time,
+        te.update_time
+    </sql>
+
+    <select id="getExampleById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from t_example te
+        where te.id = #{exampleId}
+    </select>
+
+    <select id="listExamplePage" resultMap="ExamplePageBoResultMap">
+        select
+        te.id,
+        te.example_code,
+        te.example_name
+        from t_example te
+        <where>
+            <if test="exampleCode != null and exampleCode != ''">
+                and te.example_code = #{exampleCode}
+            </if>
+            <if test="exampleName != null and exampleName != ''">
+                and te.example_name like concat('%', #{exampleName}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="listExample" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from t_example te
+        <where>
+            <if test="exampleCode != null and exampleCode != ''">
+                and te.example_code = #{exampleCode}
+            </if>
+            <if test="exampleName != null and exampleName != ''">
+                and te.example_name like concat('%', #{exampleName}, '%')
+            </if>
+        </where>
+    </select>
+
+    <update id="updateExample">
+        update t_example
+        set example_name = #{exampleName}
+        where id = #{exampleId}
+    </update>
+</mapper>

@@ -1,0 +1,1 @@
+package com.mango.api.common.constants;/** * 公共常量数据定义 */public interface MangoConstants {    /**     * 服务名称     */    String SERVICE_NAME = "backend-service";}

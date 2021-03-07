@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 日志文件路径 -->
+    <property name="application.name" value="backend-service"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="com/mango/config/logging/console-appender.xml"/>
+    <include resource="com/mango/config/logging/file-appender.xml"/>
+
+    <!-- 本地环境、开发环境、测试环境，多个使用逗号隔开 -->
+    <springProfile name="dev,test">
+        <logger name="org.springframework.boot" level="INFO"/>
+        <logger name="org.springframework.web" level="INFO"/>
+        <logger name="org.apache.commons" level="INFO"/>
+        <logger name="com.bzn" level="INFO"/>
+        <logger name="com.bzn.backend" level="DEBUG"/>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="DEBUG_FILE"/>
+            <appender-ref ref="INFO_FILE"/>
+            <appender-ref ref="ERROR_FILE"/>
+            <appender-ref ref="WARN_FILE"/>
+        </root>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <logger name="org.springframework.boot" level="INFO"/>
+        <logger name="org.springframework.web" level="INFO"/>
+        <logger name="org.apache.commons" level="INFO"/>
+        <logger name="com.bzn" level="INFO"/>
+        <logger name="com.bzn.backend" level="DEBUG"/>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="DEBUG_FILE"/>
+            <appender-ref ref="INFO_FILE"/>
+            <appender-ref ref="ERROR_FILE"/>
+            <appender-ref ref="WARN_FILE"/>
+        </root>
+    </springProfile>
+</configuration>
