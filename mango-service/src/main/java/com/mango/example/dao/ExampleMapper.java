@@ -6,7 +6,6 @@ import com.mango.example.domain.param.ModifyExampleParam;
 import com.mango.example.domain.param.QueryExampleListParam;
 import com.mango.example.domain.param.QueryExamplePageParam;
 import com.mango.utils.tkmybatis.BaseMapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public interface ExampleMapper extends BaseMapper<Example> {
      * @param exampleId 示例ID
      * @return 示例
      */
-    Example getExampleById(@Param("exampleId") Long exampleId);
+    Example getExampleById(Long exampleId);
 
     /**
      * 查询示例列表

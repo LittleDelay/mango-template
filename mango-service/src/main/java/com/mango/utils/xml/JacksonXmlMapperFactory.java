@@ -10,9 +10,6 @@ import java.text.SimpleDateFormat;
 /**
  * Jackson XmlMapper对象工厂，已初始化默认配置
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2019/1/9 9:51
  */
 public class JacksonXmlMapperFactory implements FactoryBean<XmlMapper> {
 

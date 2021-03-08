@@ -1,6 +1,6 @@
 package com.mango.example.domain.param;
 
-import com.bzn.util.page.PageListRequest;
+import com.mango.core.bean.request.PageReq;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class QueryExamplePageParam extends PageListRequest {
+public class QueryExamplePageParam extends PageReq {
 
     private static final long serialVersionUID = 4955260286893404979L;
 

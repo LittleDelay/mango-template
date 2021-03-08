@@ -3,9 +3,6 @@ package com.mango.utils.okhttp;
 /**
  * 异步HTTP请求监听器
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2020/4/20 16:13
  */
 public interface AsyncHttpListener {
 

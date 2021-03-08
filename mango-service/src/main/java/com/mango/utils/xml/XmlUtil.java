@@ -12,9 +12,6 @@ import java.io.InputStream;
 /**
  * Jackson XML数据处理工具类
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2019/1/9 9:51
  */
 @Slf4j
 public class XmlUtil {

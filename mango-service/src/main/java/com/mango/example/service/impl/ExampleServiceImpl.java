@@ -2,14 +2,10 @@ package com.mango.example.service.impl;
 
 import com.mango.common.service.IdGenerationService;
 import com.mango.example.dao.ExampleMapper;
-import com.mango.example.domain.bo.ExamplePageBo;
 import com.mango.example.domain.model.Example;
 import com.mango.example.domain.param.AddExampleParam;
 import com.mango.example.domain.param.ModifyExampleParam;
 import com.mango.example.domain.param.QueryExampleListParam;
-import com.mango.example.domain.param.QueryExamplePageParam;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,9 +55,7 @@ public class ExampleServiceImpl {
     public Long addExample(AddExampleParam addExampleParam) {
         Example example = new Example();
         example.setId(idGenerationService.getPkId());
-        example.setExampleCode(idGenerationService.getPolicyNo());
         example.setExampleName(addExampleParam.getExampleName());
-        exampleMapper.insertSelective(example);
         return example.getId();
     }
 

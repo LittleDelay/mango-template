@@ -1,12 +1,12 @@
 package com.mango.config.logging;
 
-import com.bzn.util.json.JsonUtil;
+import com.mango.utils.json.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+//import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.util.Strings;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
+//import org.aspectj.lang.ProceedingJoinPoint;
+//import org.aspectj.lang.annotation.Around;
+//import org.aspectj.lang.annotation.Aspect;
 import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ import java.util.UUID;
  *
  */
 @Slf4j
-@Aspect
+//@Aspect
 @Component
 public class WebLogAspect {
 
@@ -35,20 +35,20 @@ public class WebLogAspect {
      * @return 响应结果
      * @throws Throwable e
      */
-    @Around("execution(public * com.bzn.backend.*.controller..*.*(..))")
-    public Object interceptor(ProceedingJoinPoint point) throws Throwable {
-        long startTime = System.currentTimeMillis();
-        final String className = point.getTarget().getClass().getName();
-        final String methodName = point.getSignature().getName();
-        final String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        log.info("id {} 方法 {}.{}() 入参: {}", uuid, className, methodName, this.printRequest(point.getArgs()));
-        Object result = point.proceed();
-        final String responseLog = this.printResponse(result);
-        log.info("id {} 方法 {}.{}() 出参: {}", uuid, className, methodName, StringUtils.length(responseLog) > 500 ?
-                StringUtils.substring(responseLog, 0, 500) + "..." : responseLog);
-        log.info("id {} 方法 {}.{}() 耗时: {}", uuid, className, methodName, System.currentTimeMillis() - startTime);
-        return result;
-    }
+//    @Around("execution(public * com.bzn.backend.*.controller..*.*(..))")
+//    public Object interceptor(ProceedingJoinPoint point) throws Throwable {
+//        long startTime = System.currentTimeMillis();
+//        final String className = point.getTarget().getClass().getName();
+//        final String methodName = point.getSignature().getName();
+//        final String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+//        log.info("id {} 方法 {}.{}() 入参: {}", uuid, className, methodName, this.printRequest(point.getArgs()));
+//        Object result = point.proceed();
+//        final String responseLog = this.printResponse(result);
+//        log.info("id {} 方法 {}.{}() 出参: {}", uuid, className, methodName, StringUtils.length(responseLog) > 500 ?
+//                StringUtils.substring(responseLog, 0, 500) + "..." : responseLog);
+//        log.info("id {} 方法 {}.{}() 耗时: {}", uuid, className, methodName, System.currentTimeMillis() - startTime);
+//        return result;
+//    }
 
     /**
      * 打印入参

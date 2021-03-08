@@ -5,9 +5,6 @@ import okhttp3.MediaType;
 /**
  * OkHttp常量数据定义
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2020/4/20 20:00
  */
 public class OkHttpConstants {
 

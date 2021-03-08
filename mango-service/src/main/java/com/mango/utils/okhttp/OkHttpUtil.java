@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * 基于OkHttp的网络请求工具类
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2020/4/20 16:00
  */
 @Slf4j
 public class OkHttpUtil {

@@ -1,14 +1,10 @@
 package com.mango.api.example.service;
 
-import com.bzn.util.page.PageListResponse;
-import com.bzn.util.response.ResponseBzn;
 import com.mango.api.common.constants.MangoConstants;
 import com.mango.api.common.feign.MangoFeignConfig;
 import com.mango.api.example.domain.request.QueryExampleListReq;
 import com.mango.api.example.domain.request.QueryExamplePageReq;
-import com.mango.api.example.domain.response.QueryExampleListRes;
-import com.mango.api.example.domain.response.QueryExamplePageRes;
-import com.mango.api.example.domain.response.QueryExampleResponse;
+import com.mango.core.bean.response.ResponseKit;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +25,7 @@ public interface ExampleService {
      * @return 示例
      */
     @GetMapping(BASE_URL + "/{exampleId}")
-    ResponseBzn<QueryExampleResponse> getExample(@PathVariable("exampleId") Long exampleId);
+    ResponseKit getExample(@PathVariable("exampleId") Long exampleId);
 
     /**
      * 查询示例列表
@@ -38,7 +34,7 @@ public interface ExampleService {
      * @return 响应结果
      */
     @GetMapping(BASE_URL + "/page")
-    ResponseBzn<PageListResponse<QueryExamplePageRes>> queryExamplePage(
+    ResponseKit queryExamplePage(
             @RequestParam QueryExamplePageReq queryExamplePageReq);
 
     /**
@@ -48,6 +44,6 @@ public interface ExampleService {
      * @return 响应结果
      */
     @GetMapping(BASE_URL)
-    ResponseBzn<QueryExampleListRes> queryExampleList(
+    ResponseKit queryExampleList(
             @RequestParam QueryExampleListReq queryExampleListReq);
 }

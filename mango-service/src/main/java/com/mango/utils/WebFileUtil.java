@@ -24,9 +24,6 @@ import java.util.zip.ZipOutputStream;
 /**
  * 文件处理工具类，用于Web层文件的上传与下载等
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2018/5/29 9:53
  */
 @Slf4j
 public class WebFileUtil {
