@@ -1,9 +1,9 @@
 package com.mango.example.controller;
 
 import com.mango.BackendServiceApplicationTests;
-import com.bzn.backend.api.example.domain.request.AddExampleRequest;
-import com.bzn.backend.api.example.domain.request.ModifyExampleRequest;
-import com.bzn.backend.api.example.service.ExampleService;
+import com.mango.api.example.domain.request.AddExampleReq;
+import com.mango.api.example.domain.request.ModifyExampleReq;
+import com.mango.api.example.service.ExampleService;
 import com.mango.utils.json.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -23,9 +23,6 @@ import java.util.Objects;
 /**
  * 对于 Controller 层的接口单元测试类
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2020/7/8 10:58
  */
 @Slf4j
 @AutoConfigureMockMvc
@@ -98,14 +95,14 @@ public class ExampleControllerTests extends BackendServiceApplicationTests {
     void addExample() throws Exception {
         String url = ExampleService.BASE_URL + "/addExample";
 
-        AddExampleRequest addExampleRequest = new AddExampleRequest();
-        addExampleRequest.setExampleName("测试示例名称");
+        AddExampleReq addExampleReq = new AddExampleReq();
+        addExampleReq.setExampleName("测试示例名称");
 
         ResultActions actions = this.mockMvc.perform(
                 MockMvcRequestBuilders.post(url)
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding(StandardCharsets.UTF_8.toString())
-                        .content(Objects.requireNonNull(JsonUtil.toJsonIgnoreNull(addExampleRequest))))
+                        .content(Objects.requireNonNull(JsonUtil.toJsonIgnoreNull(addExampleReq))))
                 .andDo(MockMvcResultHandlers.print());
 
         String content = actions.andReturn().getResponse().getContentAsString();
@@ -119,14 +116,14 @@ public class ExampleControllerTests extends BackendServiceApplicationTests {
     void modifyExample() throws Exception {
         String url = ExampleService.BASE_URL + "/{exampleId}";
 
-        ModifyExampleRequest modifyExampleRequest = new ModifyExampleRequest();
-        modifyExampleRequest.setExampleName("测试修改后的示例名称");
+        ModifyExampleReq modifyExampleReq = new ModifyExampleReq();
+        modifyExampleReq.setExampleName("测试修改后的示例名称");
 
         ResultActions actions = this.mockMvc.perform(
                 MockMvcRequestBuilders.put(url, 459003288034086912L)
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding(StandardCharsets.UTF_8.toString())
-                        .content(Objects.requireNonNull(JsonUtil.toJsonIgnoreNull(modifyExampleRequest))))
+                        .content(Objects.requireNonNull(JsonUtil.toJsonIgnoreNull(modifyExampleReq))))
                 .andDo(MockMvcResultHandlers.print());
 
         String content = actions.andReturn().getResponse().getContentAsString();

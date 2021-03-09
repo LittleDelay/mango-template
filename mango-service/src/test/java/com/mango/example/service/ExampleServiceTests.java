@@ -1,14 +1,11 @@
 package com.mango.example.service;
 
 import com.mango.BackendServiceApplicationTests;
-import com.mango.example.domain.bo.ExamplePageBo;
 import com.mango.example.domain.model.Example;
 import com.mango.example.domain.param.AddExampleParam;
 import com.mango.example.domain.param.ModifyExampleParam;
 import com.mango.example.domain.param.QueryExampleListParam;
-import com.mango.example.domain.param.QueryExamplePageParam;
 import com.mango.example.service.impl.ExampleServiceImpl;
-import com.bzn.util.page.PageListResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +15,6 @@ import java.util.List;
 /**
  * 示例接口单元测试类
  *
- * @author Shangxp
- * @version 1.0.0
- * @since 2020/7/8 10:12
  */
 @Slf4j
 public class ExampleServiceTests extends BackendServiceApplicationTests {
@@ -35,20 +29,6 @@ public class ExampleServiceTests extends BackendServiceApplicationTests {
     void getExampleById() {
         Example example = this.exampleService.getExampleById(430809380267626496L);
         log.info("根据ID获取到的示例信息：{}", example.toString());
-    }
-
-    /**
-     * 查询示例列表
-     */
-    @Test
-    void listExamplePage() {
-        QueryExamplePageParam queryExamplePageParam = new QueryExamplePageParam();
-        queryExamplePageParam.setPageSize(1);
-        queryExamplePageParam.setPageSize(5);
-        queryExamplePageParam.setExampleName("示例");
-
-        PageListResponse<ExamplePageBo> pageListResponse = this.exampleService.listExamplePage(queryExamplePageParam);
-        log.info("分页查询示例信息列表结果：{}", pageListResponse.toString());
     }
 
     /**
